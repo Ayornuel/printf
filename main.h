@@ -1,32 +1,24 @@
-
-#ifndef _MAIN_H_
-#define _MAIN_H_
-
-#include <stdlib.h>
-#include <stdarg.h>
-#include <limits.h>
+#ifndef MAIN_H
+#define MAIN_H
 
 /**
- * struct fprinter - a struct holding the
- * format specifier and a pointer to the handling
- * function
- * @spec: the format specifier
- * @hf: a pointer to the handling function
+ * struct Cspecs - conversion specifier struct.
+ * @cs: char identifying the specifier.
+ * @f: pointer to a function.
  */
-typedef struct fprinter
+
+typedef struct Cspecs
 {
-  char *spec;
-  int (*hf)(va_list);
-} fprinter;
+	char cs;
+	int (*f)();
+} cs_t;
 
+int _putchar_c(char c);
+int _putchar(va_list a);
+int print_str(va_list a);
+int print_uint(unsigned int i);
+int print_int(va_list a);
+int print_va_args(char c, va_list a);
 int _printf(const char *format, ...);
-int _vprintf(const char *format, va_list args);
-int func_call(char, va_list);
-int _putchar(char c);
-
-int print_char(va_list);
-int print_string(va_list);
-int print_int(va_list);
-int _print_int(int, int *);
 
 #endif
